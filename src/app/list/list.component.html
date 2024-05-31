@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Lista de Artículos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>ID</ion-col>
+      <ion-col>Nombre</ion-col>
+      <ion-col>Precio</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let article of articles">
+      <ion-col>{{ article.id }}</ion-col>
+      <ion-col>{{ article.nombre }}</ion-col>
+      <ion-col>{{ article.precio | currency }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

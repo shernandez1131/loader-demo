@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Registro de Artículos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="background-color: white;">
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size-md="6" size-lg="4">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Registrar Artículo</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form (ngSubmit)="submitForm()">
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Precio</ion-label>
+                <ion-input type="number" [(ngModel)]="precio" name="precio" required></ion-input>
+              </ion-item>
+              <ion-button expand="full" type="submit">Registrar</ion-button>
+            </form>
+            <br>
+            <ion-button expand="full" (click)="showLoaderSimple()">Start Loader</ion-button>
+          </ion-card-content>
+        </ion-card>
+        <app-loader 
+          [images]="images" 
+          [texts]="texts" 
+          [interval]="200" 
+          [isLoading]="isLoading">
+        </app-loader>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
