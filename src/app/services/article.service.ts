@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-  private apiUrl = 'http://localhost:8001/orchestrator/process';
+  private baseUrl = 'http://localhost:8080/orchestrator';
 
   constructor(private http: HttpClient) {}
 
-  saveArticle(article: any): Observable<any> {
-    return this.http.post(this.apiUrl, article);
+  saveArticle(data: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.baseUrl + '/process', data, { headers });
   }
 
   getArticles(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.baseUrl + '/entities');
   }
 }

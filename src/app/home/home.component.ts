@@ -45,19 +45,21 @@ export class HomeComponent {
   submitForm() {
     this.showLoader();
     const article = { nombre: this.nombre, precio: this.precio };
-    this.articleService.saveArticle(article).subscribe({
-      next: (response) => {
-        console.log('Artículo guardado', response);
-      },
-      error: (error) => {
-        console.error('Error al guardar el artículo', error);
-      },
-      complete: () => {
-        console.log('Obtención de artículos completada');
-        this.hideLoader();
-        this.router.navigate(['/list']);
-      }
-    });
+    setTimeout(()=>{
+      this.articleService.saveArticle(article).subscribe({
+        next: (response) => {
+          console.log('Artículo guardado', response);
+        },
+        error: (error) => {
+          console.error('Error al guardar el artículo', error);
+        },
+        complete: () => {
+          console.log('Obtención de artículos completada');
+          this.hideLoader();
+          this.router.navigate(['/list']);
+        }
+      });
+    }, 3000)
   }
 
   showLoaderSimple() {
